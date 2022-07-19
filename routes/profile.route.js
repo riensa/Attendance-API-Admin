@@ -7,6 +7,8 @@ const VerifyToken = require('../middlewares/auth/jwt.auth.js');
 
 
 // Retrieve all rooms from the database
-router.post("/", [VerifyToken, ProfileValidator.validateAdmin], ProfileController.create);
+router.use(VerifyToken)
+router.post("/", ProfileValidator.validateAdmin, ProfileController.create);
+router.put("/", ProfileValidator.validateAdminUpdate, ProfileController.update);
 
 module.exports = router;
