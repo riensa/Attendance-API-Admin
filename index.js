@@ -5,10 +5,14 @@ const app = express();
 
 // CORS
 // var corsOptions = {
-//   origin: "http://localhost:8082"
+//   origin: "http://localhost:9001"
 // };
 
 app.use(cors());
+
+// Sequelize
+// const db = require("./models");
+// db.sequelize.sync(); // uncomment if need to always check wheter table is already exist or not
 
 
 // parse requests of content-type - application/json

@@ -1,4 +1,16 @@
-// Retrieve all available rooms from the database
+const DB = require("../models");
+
+const AdminsDB = DB.admins;
+const Op = DB.Sequelize.Op;
+
+
 exports.login = async (req, res) => {
-	res.send("Hello World!");
+	try {
+		var admins = await AdminsDB.findAll()
+		res.send(admins);
+	} catch (error) {
+		res.status(500).send({
+			message: error.message || "Some error occurred while retrieving admins."
+		});
+	}
 }
