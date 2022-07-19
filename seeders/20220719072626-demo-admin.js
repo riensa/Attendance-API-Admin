@@ -13,19 +13,19 @@ module.exports = {
     */
 
      await queryInterface.bulkInsert('admins', [{
-      username: 'admin_1',
+      username: 'admin1',
       fullname: 'Admin 1',
       status: 'active',
       createdAt: '2022-07-19 07:30:00',
       updatedAt: '2022-07-19 07:30:00'
     }, {
-      username: 'admin_2',
+      username: 'admin2',
       fullname: 'Admin 2',
       status: 'active',
       createdAt: '2022-07-19 07:30:00',
       updatedAt: '2022-07-19 07:30:00'
     }, {
-      username: 'admin_3',
+      username: 'admin3',
       fullname: 'Admin 3',
       status: 'active',
       createdAt: '2022-07-19 07:30:00',
