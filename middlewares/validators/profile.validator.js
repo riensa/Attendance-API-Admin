@@ -7,8 +7,10 @@ exports.validateAdmin = [
 			.not()
 			.isEmpty()
 			.withMessage('Username can not be empty!')
+			.bail()
 			.isLength({min:4})
 			.withMessage('Username must be minimum 4 characters long')
+			.bail()
 			.isAlphanumeric()
 			.withMessage('Username must be alphanumeric'),
     check('password')
@@ -17,6 +19,7 @@ exports.validateAdmin = [
 			.not()
 			.isEmpty()
 			.withMessage('Password can not be empty!')
+			.bail()
 			.isLength({min:8})
 			.withMessage('Password must be minimum 8 characters long'),
 		check('fullname')
@@ -25,6 +28,7 @@ exports.validateAdmin = [
 			.not()
 			.isEmpty()
 			.withMessage('Fullname can not be empty!')
+			.bail()
 			.isLength({min:3})
 			.withMessage('Fullname must be minimum 3 characters long'),
     (req, res, next) => {
@@ -118,5 +122,21 @@ exports.validateAdminUpdate = [
 			errors: errors.array()
 		});
 			next();
+},
+];
+
+exports.validateSession = [
+	(req, res, next) => {
+
+		// check auth
+		if(!req.user) {
+			return res.status(403).json({
+				status: 403,
+				success: false,
+				message: 'Unauthorised Access',
+				errors: 'Unauthorised Access'
+			});
+		}
+		next();
 },
 ];

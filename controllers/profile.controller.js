@@ -4,6 +4,66 @@ const bcrypt = require("bcrypt");
 const AdminsDB = DB.admins;
 const Op = DB.Sequelize.Op;
 
+exports.findAll = async (req, res) => {
+	try {
+		// fetch all data
+		let AdminList =  await AdminsDB.findAll()
+
+		return res.send({
+			status: 200,
+			success: true,
+			message: "Fetch All Admin Successfully",
+			data: AdminList
+		})
+	} catch (error) {
+		return res.status(500).send({
+			status: 500,
+			success: false,
+			message: "Unexpected Error",
+			errors: error.message || "Some error occurred"
+		});
+	}
+}
+
+exports.findOne = async (req, res) => {
+	try {
+		const id = req.params.id;
+
+		let DetailAdmin = await AdminsDB.findOne({ 
+      where: { id: id }
+    })
+
+		if(DetailAdmin) {
+			return res.send({
+				status: 200,
+				success: true,
+				message: "Fetch Detail Admin Successfully",
+				data: DetailAdmin
+			})
+		} 
+
+		return res.status(400).send({
+			status: 400,
+			success: false,
+			message: "Validation Error",
+			errors: [{
+				"value": id,
+				"msg": "Admin not found",
+				"param": "id",
+				"location": "body"
+			}]
+		});
+		
+	} catch (error) {
+		return res.status(500).send({
+			status: 500,
+			success: false,
+			message: "Unexpected Error",
+			errors: error.message || "Some error occurred"
+		});
+	}
+}
+
 exports.create = async (req, res) => {
 	try {
 
