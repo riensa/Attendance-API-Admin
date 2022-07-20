@@ -10,7 +10,7 @@ module.exports = {
      */
      await queryInterface.addColumn('admins', 'group', {
       type: Sequelize.CHAR,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 'A',
       after: 'fullname'
     });
