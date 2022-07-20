@@ -6,7 +6,7 @@ const verifyToken = (req, res, next) => {
   if (req.headers && req.headers.authorization && req.headers.authorization.split(' ')[0] === 'JWT') {
     jwt.verify(req.headers.authorization.split(' ')[1], process.env.API_SECRET, function (err, decode) {
       
-			if (err || !decode) {
+			if (err || !decode || decode.group !== 'A') {
 				req.user = undefined;
 				if(err) {
 					return res.status(500)
@@ -20,7 +20,9 @@ const verifyToken = (req, res, next) => {
 				next()
 			} else {
 
-				AdminsDB.findOne({ where: {id: decode.id} })
+				AdminsDB.findOne({ where: {
+					id: decode.id
+				} })
 					.then(data => {
 						req.user = data;
 						next()

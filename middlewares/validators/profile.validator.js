@@ -124,3 +124,19 @@ exports.validateAdminUpdate = [
 			next();
 },
 ];
+
+exports.validateSession = [
+	(req, res, next) => {
+
+		// check auth
+		if(!req.user) {
+			return res.status(403).json({
+				status: 403,
+				success: false,
+				message: 'Unauthorised Access',
+				errors: 'Unauthorised Access'
+			});
+		}
+		next();
+},
+];
