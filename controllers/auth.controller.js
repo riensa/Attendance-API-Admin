@@ -11,7 +11,10 @@ exports.login = async (req, res) => {
 
 		// find username
 		let admin = await AdminsDB.findOne({
-			where: {username: req.body.username}
+			where: {
+				username: req.body.username,
+				status: 'active'
+			}
 		})
 
 		// compare password
@@ -40,7 +43,8 @@ exports.login = async (req, res) => {
 
 		//signing token with user id
 		var token = jwt.sign({
-			id: admin.id
+			id: admin.id,
+			group: admin.group
 		}, process.env.API_SECRET, {
 			expiresIn: 86400
 		});
