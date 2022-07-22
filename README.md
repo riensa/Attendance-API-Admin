@@ -7,10 +7,10 @@ Build on **[Express](https://expressjs.com/) v4.18.1** and **[Node](https://node
 
 Repository related to this app:
 1. [Admin API](https://github.com/riensa/Attendance-API-Admin)
-2. Employee API
-3. Attendance API
-4. Admin Dashboard
-5. Employee Dashboard
+2. [Employee API](https://github.com/riensa/Attendance-API-Employee)
+3. [Attendance API](https://github.com/riensa/Attendance-API-Attend)
+4. [Admin Dashboard](https://github.com/riensa/Attendance-Dashboard-Admin)
+5. Employee Dashboard 
 
 ## Getting started
 ---
@@ -28,6 +28,6 @@ npx sequelize-cli db:seed:all
 npm run dev
 ```
  
- ## API Documentation
- Postman via JSON Link : https://www.getpostman.com/collections/468285ee01002226274c
- Postman via file : File inside folder **postman** in current repo
+## API Documentation
+Postman via JSON Link : https://www.getpostman.com/collections/468285ee01002226274c
+Postman via file : File in folder **postman** in current repo

@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "d4428415-e053-4ca2-adfe-14188fc324fa",
-		"name": "Attendance API Admin",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"_postman_id": "4efa9476-b1eb-4c21-b4b0-75cc9af690e6",
+		"name": "API Admin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7850168"
 	},
 	"item": [
 		{
@@ -17,7 +18,7 @@
 								"exec": [
 									"const jsonData = JSON.parse(responseBody);",
 									"const accessToken = \"JWT \" + jsonData.data.accessToken",
-									"pm.collectionVariables.set(\"access_token\", accessToken);"
+									"pm.globals.set(\"admin_token\", accessToken);"
 								],
 								"type": "text/javascript"
 							}
@@ -42,9 +43,9 @@
 							]
 						},
 						"url": {
-							"raw": "{{host}}auth/login",
+							"raw": "{{host_admin}}auth/login",
 							"host": [
-								"{{host}}auth"
+								"{{host_admin}}auth"
 							],
 							"path": [
 								"login"
@@ -73,9 +74,9 @@
 									]
 								},
 								"url": {
-									"raw": "{{host}}auth/login",
+									"raw": "{{host_admin}}auth/login",
 									"host": [
-										"{{host}}auth"
+										"{{host_admin}}auth"
 									],
 									"path": [
 										"login"
@@ -143,9 +144,9 @@
 									]
 								},
 								"url": {
-									"raw": "{{host}}auth/login",
+									"raw": "{{host_admin}}auth/login",
 									"host": [
-										"{{host}}auth"
+										"{{host_admin}}auth"
 									],
 									"path": [
 										"login"
@@ -213,9 +214,9 @@
 									]
 								},
 								"url": {
-									"raw": "{{host}}auth/login",
+									"raw": "{{host_admin}}auth/login",
 									"host": [
-										"{{host}}auth"
+										"{{host_admin}}auth"
 									],
 									"path": [
 										"login"
@@ -283,9 +284,9 @@
 									]
 								},
 								"url": {
-									"raw": "{{host}}auth/login",
+									"raw": "{{host_admin}}auth/login",
 									"host": [
-										"{{host}}auth"
+										"{{host_admin}}auth"
 									],
 									"path": [
 										"login"
@@ -340,13 +341,92 @@
 			"name": "Profile",
 			"item": [
 				{
+					"name": "All Admin",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{admin_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host_admin}}profile",
+							"host": [
+								"{{host_admin}}profile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{admin_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host_admin}}profile",
+									"host": [
+										"{{host_admin}}profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1961"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7a9-uq60gwJYcX1vA9DVUdjycR1ad4c\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 20 Jul 2022 02:28:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"success\": true,\n    \"message\": \"Fetch All Admin Successfully\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"username\": \"admin1\",\n            \"password\": \"$2b$08$TJmWQhQlLscZC9QYDGmLG.STPPu94Qw5GWZerAsFmlKn9wKY77kWy\",\n            \"fullname\": \"Admin 1\",\n            \"group\": \"A\",\n            \"status\": \"active\",\n            \"createdAt\": \"2022-07-19T07:30:00.000Z\",\n            \"updatedAt\": \"2022-07-19T07:30:00.000Z\"\n        },\n        {\n            \"id\": 2,\n            \"username\": \"admin2\",\n            \"password\": \"$2b$08$y7BtSs4HO3pduoDvh45C8e06mlhixkVOpd.asFcqyroyz70UeCZOC\",\n            \"fullname\": \"Admin 2\",\n            \"group\": \"A\",\n            \"status\": \"active\",\n            \"createdAt\": \"2022-07-19T07:30:00.000Z\",\n            \"updatedAt\": \"2022-07-19T07:30:00.000Z\"\n        },\n        {\n            \"id\": 3,\n            \"username\": \"admin3\",\n            \"password\": \"$2b$08$ZUDjcydeacbQfb/bBX541uvER0NXLbOYFYoK.RM7jy2Spo4HRTpNG\",\n            \"fullname\": \"Admin 3\",\n            \"group\": \"A\",\n            \"status\": \"active\",\n            \"createdAt\": \"2022-07-19T07:30:00.000Z\",\n            \"updatedAt\": \"2022-07-19T07:30:00.000Z\"\n        },\n        {\n            \"id\": 4,\n            \"username\": \"admin4\",\n            \"password\": \"$2b$08$myl2MzTfQSdyRe9HLfDOOe9ZpWDeVwPMCR.TJ6NF5cnpChbbNnY9e\",\n            \"fullname\": \"admin 4\",\n            \"group\": \"A\",\n            \"status\": \"active\",\n            \"createdAt\": \"2022-07-19T09:56:10.000Z\",\n            \"updatedAt\": \"2022-07-19T14:33:55.000Z\"\n        },\n        {\n            \"id\": 5,\n            \"username\": \"adminbaru\",\n            \"password\": \"$2b$08$EcI/R6XLzTwFIzRHk4oKY.tjBE9SXGq3SaRrVFJzJ1HHBK/Y.wqtC\",\n            \"fullname\": \"Admin Baru\",\n            \"group\": \"A\",\n            \"status\": \"active\",\n            \"createdAt\": \"2022-07-19T10:00:04.000Z\",\n            \"updatedAt\": \"2022-07-19T10:00:04.000Z\"\n        },\n        {\n            \"id\": 6,\n            \"username\": \"adminbaru0\",\n            \"password\": \"$2b$08$gZxtXIInjWpOsNXkL9RyhuLx2e9G9z64L8eehBTFOVP5ePayfS8ti\",\n            \"fullname\": \"Admin Baru\",\n            \"group\": \"A\",\n            \"status\": \"active\",\n            \"createdAt\": \"2022-07-19T10:00:52.000Z\",\n            \"updatedAt\": \"2022-07-19T10:00:52.000Z\"\n        },\n        {\n            \"id\": 7,\n            \"username\": \"adminbaru1\",\n            \"password\": \"$2b$08$1qA3u3Gz.nH6Eq6nokgcveY1RGRUiMtp5kbcD7Hi9x9PIKG8h/xoK\",\n            \"fullname\": \"Admin Baru 1\",\n            \"group\": \"A\",\n            \"status\": \"active\",\n            \"createdAt\": \"2022-07-19T10:01:44.000Z\",\n            \"updatedAt\": \"2022-07-19T10:01:44.000Z\"\n        },\n        {\n            \"id\": 8,\n            \"username\": \"newadmin\",\n            \"password\": \"$2b$08$ekmMcLFfBWIpdljGH45akuQ3ApCEhgRdMRRQazns.SXv/GF2x5Xvm\",\n            \"fullname\": \"New Admin\",\n            \"group\": \"A\",\n            \"status\": \"active\",\n            \"createdAt\": \"2022-07-19T11:04:49.000Z\",\n            \"updatedAt\": \"2022-07-19T11:04:49.000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
 					"name": "New Admin",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{access_token}}",
+								"value": "{{admin_token}}",
 								"type": "default"
 							}
 						],
@@ -355,25 +435,25 @@
 							"urlencoded": [
 								{
 									"key": "username",
-									"value": "",
+									"value": "adminT",
 									"type": "default"
 								},
 								{
 									"key": "password",
-									"value": "",
+									"value": "password_T",
 									"type": "default"
 								},
 								{
 									"key": "fullname",
-									"value": "",
+									"value": "Admin T",
 									"type": "default"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{host}}profile",
+							"raw": "{{host_admin}}profile",
 							"host": [
-								"{{host}}profile"
+								"{{host_admin}}profile"
 							]
 						}
 					},
@@ -385,7 +465,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "{{access_token}}",
+										"value": "{{admin_token}}",
 										"type": "text"
 									}
 								],
@@ -410,9 +490,9 @@
 									]
 								},
 								"url": {
-									"raw": "{{host}}profile",
+									"raw": "{{host_admin}}profile",
 									"host": [
-										"{{host}}profile"
+										"{{host_admin}}profile"
 									]
 								}
 							},
@@ -463,8 +543,8 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "{{access_token}}",
-										"type": "text"
+										"value": "{{admin_token}}",
+										"type": "default"
 									}
 								],
 								"body": {
@@ -488,9 +568,9 @@
 									]
 								},
 								"url": {
-									"raw": "{{host}}profile",
+									"raw": "{{host_admin}}profile",
 									"host": [
-										"{{host}}profile"
+										"{{host_admin}}profile"
 									]
 								}
 							},
@@ -512,15 +592,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "716"
+									"value": "325"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"2cc-8u2Q1dQfxceaGiwXF3YaASUva8Y\""
+									"value": "W/\"145-JdGIxMEZFbJ6k1C77mWb3p8rxTs\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 19 Jul 2022 11:02:59 GMT"
+									"value": "Wed, 20 Jul 2022 02:16:53 GMT"
 								},
 								{
 									"key": "Connection",
@@ -532,7 +612,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": 400,\n    \"success\": false,\n    \"message\": \"Validation Error\",\n    \"errors\": [\n        {\n            \"value\": \"\",\n            \"msg\": \"Username can not be empty!\",\n            \"param\": \"username\",\n            \"location\": \"body\"\n        },\n        {\n            \"value\": \"\",\n            \"msg\": \"Username must be minimum 4 characters long\",\n            \"param\": \"username\",\n            \"location\": \"body\"\n        },\n        {\n            \"value\": \"\",\n            \"msg\": \"Username must be alphanumeric\",\n            \"param\": \"username\",\n            \"location\": \"body\"\n        },\n        {\n            \"value\": \"\",\n            \"msg\": \"Password can not be empty!\",\n            \"param\": \"password\",\n            \"location\": \"body\"\n        },\n        {\n            \"value\": \"\",\n            \"msg\": \"Password must be minimum 8 characters long\",\n            \"param\": \"password\",\n            \"location\": \"body\"\n        },\n        {\n            \"value\": \"\",\n            \"msg\": \"Fullname can not be empty!\",\n            \"param\": \"fullname\",\n            \"location\": \"body\"\n        },\n        {\n            \"value\": \"\",\n            \"msg\": \"Fullname must be minimum 3 characters long\",\n            \"param\": \"fullname\",\n            \"location\": \"body\"\n        }\n    ]\n}"
+							"body": "{\n    \"status\": 400,\n    \"success\": false,\n    \"message\": \"Validation Error\",\n    \"errors\": [\n        {\n            \"value\": \"\",\n            \"msg\": \"Username can not be empty!\",\n            \"param\": \"username\",\n            \"location\": \"body\"\n        },\n        {\n            \"value\": \"\",\n            \"msg\": \"Password can not be empty!\",\n            \"param\": \"password\",\n            \"location\": \"body\"\n        },\n        {\n            \"value\": \"\",\n            \"msg\": \"Fullname can not be empty!\",\n            \"param\": \"fullname\",\n            \"location\": \"body\"\n        }\n    ]\n}"
 						},
 						{
 							"name": "Username not Unique",
@@ -541,7 +621,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "{{access_token}}",
+										"value": "{{admin_token}}",
 										"type": "text"
 									}
 								],
@@ -566,9 +646,9 @@
 									]
 								},
 								"url": {
-									"raw": "{{host}}profile",
+									"raw": "{{host_admin}}profile",
 									"host": [
-										"{{host}}profile"
+										"{{host_admin}}profile"
 									]
 								}
 							},
@@ -621,9 +701,8 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{access_token}}",
-								"type": "default",
-								"disabled": true
+								"value": "{{admin_token}}",
+								"type": "default"
 							}
 						],
 						"body": {
@@ -644,13 +723,19 @@
 									"value": "",
 									"description": "active, inactive",
 									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "",
+									"description": "ignore empty value",
+									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{host}}profile",
+							"raw": "{{host_admin}}profile",
 							"host": [
-								"{{host}}profile"
+								"{{host_admin}}profile"
 							]
 						}
 					},
@@ -662,7 +747,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "{{access_token}}",
+										"value": "{{admin_token}}",
 										"type": "default"
 									}
 								],
@@ -702,9 +787,9 @@
 									]
 								},
 								"url": {
-									"raw": "{{host}}profile",
+									"raw": "{{host_admin}}profile",
 									"host": [
-										"{{host}}profile"
+										"{{host_admin}}profile"
 									]
 								}
 							},
@@ -755,7 +840,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "{{access_token}}",
+										"value": "{{admin_token}}",
 										"type": "default"
 									}
 								],
@@ -795,9 +880,9 @@
 									]
 								},
 								"url": {
-									"raw": "{{host}}profile",
+									"raw": "{{host_admin}}profile",
 									"host": [
-										"{{host}}profile"
+										"{{host_admin}}profile"
 									]
 								}
 							},
@@ -848,7 +933,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "{{access_token}}",
+										"value": "{{admin_token}}",
 										"type": "default"
 									}
 								],
@@ -888,9 +973,9 @@
 									]
 								},
 								"url": {
-									"raw": "{{host}}profile",
+									"raw": "{{host_admin}}profile",
 									"host": [
-										"{{host}}profile"
+										"{{host_admin}}profile"
 									]
 								}
 							},
@@ -941,7 +1026,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "{{access_token}}",
+										"value": "{{admin_token}}",
 										"type": "default"
 									}
 								],
@@ -981,9 +1066,9 @@
 									]
 								},
 								"url": {
-									"raw": "{{host}}profile",
+									"raw": "{{host_admin}}profile",
 									"host": [
-										"{{host}}profile"
+										"{{host_admin}}profile"
 									]
 								}
 							},
@@ -1028,6 +1113,155 @@
 							"body": "{\n    \"status\": 400,\n    \"success\": false,\n    \"message\": \"Validation Error\",\n    \"errors\": [\n        {\n            \"value\": \"40\",\n            \"msg\": \"Admin not found\",\n            \"param\": \"username\",\n            \"location\": \"body\"\n        }\n    ]\n}"
 						}
 					]
+				},
+				{
+					"name": "Detail Admin",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{admin_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host_admin}}profile/detail/1",
+							"host": [
+								"{{host_admin}}profile"
+							],
+							"path": [
+								"detail",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{admin_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host_admin}}profile/detail/1",
+									"host": [
+										"{{host_admin}}profile"
+									],
+									"path": [
+										"detail",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "312"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"138-qaOBDoSvPopYM6ud2dGb8+1qPl8\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 20 Jul 2022 02:40:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"success\": true,\n    \"message\": \"Fetch Detail Admin Successfully\",\n    \"data\": {\n        \"id\": 1,\n        \"username\": \"admin1\",\n        \"password\": \"$2b$08$TJmWQhQlLscZC9QYDGmLG.STPPu94Qw5GWZerAsFmlKn9wKY77kWy\",\n        \"fullname\": \"Admin 1\",\n        \"group\": \"A\",\n        \"status\": \"active\",\n        \"createdAt\": \"2022-07-19T07:30:00.000Z\",\n        \"updatedAt\": \"2022-07-19T07:30:00.000Z\"\n    }\n}"
+						},
+						{
+							"name": "Admin not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{admin_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host_admin}}profile/detail/100000",
+									"host": [
+										"{{host_admin}}profile"
+									],
+									"path": [
+										"detail",
+										"100000"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "144"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"90-1/oACPL8mtWkos0aSM+PokFXm90\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 20 Jul 2022 02:41:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 400,\n    \"success\": false,\n    \"message\": \"Validation Error\",\n    \"errors\": [\n        {\n            \"value\": \"100000\",\n            \"msg\": \"Admin not found\",\n            \"param\": \"id\",\n            \"location\": \"body\"\n        }\n    ]\n}"
+						}
+					]
 				}
 			]
 		},
@@ -1035,13 +1269,13 @@
 			"name": "General Error",
 			"item": [
 				{
-					"name": "General Error",
+					"name": "Sample API",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{access_token}}",
+								"value": "{{admin_token}}",
 								"type": "default"
 							}
 						],
@@ -1066,9 +1300,9 @@
 							]
 						},
 						"url": {
-							"raw": "{{host}}profile",
+							"raw": "{{host_admin}}profile",
 							"host": [
-								"{{host}}profile"
+								"{{host_admin}}profile"
 							]
 						}
 					},
@@ -1080,7 +1314,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "{{access_token}}",
+										"value": "{{admin_token}}",
 										"type": "text"
 									}
 								],
@@ -1105,9 +1339,9 @@
 									]
 								},
 								"url": {
-									"raw": "{{host}}profile",
+									"raw": "{{host_admin}}profile",
 									"host": [
-										"{{host}}profile"
+										"{{host_admin}}profile"
 									]
 								}
 							},
@@ -1158,7 +1392,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "{{access_token}}",
+										"value": "{{admin_token}}",
 										"type": "default",
 										"disabled": true
 									}
@@ -1184,9 +1418,9 @@
 									]
 								},
 								"url": {
-									"raw": "{{host}}profile",
+									"raw": "{{host_admin}}profile",
 									"host": [
-										"{{host}}profile"
+										"{{host_admin}}profile"
 									]
 								}
 							},
@@ -1237,7 +1471,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "{{access_token}}V",
+										"value": "{{admin_token}}V",
 										"type": "default"
 									}
 								],
@@ -1262,9 +1496,9 @@
 									]
 								},
 								"url": {
-									"raw": "{{host}}profile",
+									"raw": "{{host_admin}}profile",
 									"host": [
-										"{{host}}profile"
+										"{{host_admin}}profile"
 									]
 								}
 							},
@@ -1307,6 +1541,84 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"status\": 500,\n    \"success\": false,\n    \"message\": \"Unexpected Error\",\n    \"errors\": {\n        \"name\": \"JsonWebTokenError\",\n        \"message\": \"invalid signature\"\n    }\n}"
+						},
+						{
+							"name": "Employee Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{employee_token}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "default"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "default"
+										},
+										{
+											"key": "fullname",
+											"value": "",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host_admin}}profile",
+									"host": [
+										"{{host_admin}}profile"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "93"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5d-CpACwtM7uv7QT4Ya1g0R3fOE/mA\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 20 Jul 2022 02:29:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 403,\n    \"success\": false,\n    \"message\": \"Unauthorised Access\",\n    \"errors\": \"Unauthorised Access\"\n}"
 						}
 					]
 				}
@@ -1335,13 +1647,8 @@
 	],
 	"variable": [
 		{
-			"key": "host",
+			"key": "host_admin",
 			"value": "http://localhost:9001/",
-			"type": "default"
-		},
-		{
-			"key": "access_token",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU4MjM0NjQxLCJleHAiOjE2NTgzMjEwNDF9.9IYtmgnXMrT-djTOwRsd6kddeiJwUagSKPF5fN_8s9Y",
 			"type": "default"
 		}
 	]
